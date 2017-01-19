@@ -1,49 +1,53 @@
+#ifndef GENETICALGORITHM_TPP
+#define GENETICALGORITHM_TPP
 #pragma once
-#include "GeneticAlgorithm.h"
-#include "Chromosom.h"
-#include <vector>
 
 template<typename T>
-void GeneticAlgorithm<T, Extends<T, Chromosom>>::mutate() {
+GeneticAlgorithm<T, Extends<T, Chromosom>>::GeneticAlgorithm(std::vector<T*> *population, EvaluationStrategy<T>* es, 
+															 CrossoverStrategy<T>* cs = nullptr, MutateStrategy<T>*ms = nullptr) {
+	this->evaluationStrategy = es;
+	this->crossoverStrategy = cs;
+	this->mutateStrategy = ms;
 
+	this->population = population;
 }
 
 template<typename T>
-std::vector<T>* GeneticAlgorithm<T, Extends<T, Chromosom>>::get_initial_population() {
-	return std::vector<T>();  
-}
-
-
-template<typename T>
-GeneticAlgorithm<T, Extends<T, Chromosom>>::~GeneticAlgorithm()
-{
+GeneticAlgorithm<T, Extends<T, Chromosom>>::~GeneticAlgorithm() {
+	for (T* p : *population) my_delete(p);
+	my_delete(this->population);
+	my_delete(this->evaluationStrategy);
+	my_delete(this->mutateStrategy);
+	my_delete(this->crossoverStrategy);
 }
 
 template<typename T>
-void GeneticAlgorithm<T, Extends<T, Chromosom>>::crossover() {
-
+void GeneticAlgorithm<T, Extends<T, Chromosom>>::run_step() {
+	if(this->crossoverStrategy != nullptr) this->crossoverStrategy->crossover(population);
+	if(this->mutateStrategy != nullptr) this->mutateStrategy->mutate(population);
 }
 
 template<typename T>
 void GeneticAlgorithm<T, Extends<T, Chromosom>>::run(int n, bool useOldPopulation = false) {
-	if (!useOldPopulation || this->population == nullptr) {
-		std::vector<Chromosom> *population = get_initial_population();
-	}
+	
+	this->evaluationStrategy->evaluatePopulation(population);
+
+	double global_max = -1, current_best;
 
 	for (int i = 0; i < n; ++i) {
-		// method before
+		this->pre_run_method();
 		this->run_step();
-		// method afrer
+		current_best = this->evaluationStrategy->evaluatePopulation(population);
+		global_max = max(global_max, current_best);
+		this->post_run_method();
+		if(i%1000 == 0) cout << "i " << i << " current_best: " << current_best << " global_max: " << global_max << endl;
 	}
 }
 
 template<typename T>
-void GeneticAlgorithm<T, Extends<T, Chromosom>>::run_step() {}
-
+void GeneticAlgorithm<T, Extends<T, Chromosom>>::pre_run_method() {}
 template<typename T>
-GeneticAlgorithm<T, Extends<T, Chromosom>>::GeneticAlgorithm()
-{
-	this->population = nullptr;
-};
+void GeneticAlgorithm<T, Extends<T, Chromosom>>::post_run_method() {}
 
 
+#endif

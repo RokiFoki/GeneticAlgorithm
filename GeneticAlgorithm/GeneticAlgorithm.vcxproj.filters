@@ -7,6 +7,12 @@
     <ClCompile Include="Chromosom.cpp">
       <Filter>sources</Filter>
     </ClCompile>
+    <ClCompile Include="BinaryVector.cpp">
+      <Filter>chromosoms</Filter>
+    </ClCompile>
+    <ClCompile Include="BitMutation.cpp">
+      <Filter>mutations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chromosom.h">
@@ -14,6 +20,24 @@
     </ClInclude>
     <ClInclude Include="GeneticAlgorithm.h">
       <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EvaluationStrategy.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossoverStrategy.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MutateStrategy.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryVector.h">
+      <Filter>chromosoms</Filter>
+    </ClInclude>
+    <ClInclude Include="BitMutation.h">
+      <Filter>mutations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -23,10 +47,25 @@
     <Filter Include="sources">
       <UniqueIdentifier>{8c575854-fe7c-4369-9962-eea6675c5e26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="chromosoms">
+      <UniqueIdentifier>{8eb05350-6327-4623-aca9-3ecb96e58bab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mutations">
+      <UniqueIdentifier>{175c795b-7add-4585-883e-826231193d3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="GeneticAlgorithm.tpp">
-      <Filter>headers</Filter>
+      <Filter>sources</Filter>
+    </None>
+    <None Include="EvaluationStrategy.tpp">
+      <Filter>sources</Filter>
+    </None>
+    <None Include="CrossoverStrategy.tpp">
+      <Filter>sources</Filter>
+    </None>
+    <None Include="MutateStrategy.tpp">
+      <Filter>sources</Filter>
     </None>
   </ItemGroup>
 </Project>

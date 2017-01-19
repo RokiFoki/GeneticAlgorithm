@@ -1,29 +1,40 @@
+#ifndef GENETICALGORITHM_H
+#define GENETICALGORITHM_H
 #pragma once
+
 #include <vector> 	
-#include <type_traits>
 
+#include "util.h"
 #include "Chromosom.h"
+#include "EvaluationStrategy.h"
+#include "CrossoverStrategy.h"
+#include "MutateStrategy.h"
 
-template <typename Derived, typename Base>
-using Extends = typename std::enable_if<std::is_base_of<Base, Derived>::value>::type;
 
 template<typename T, typename Sfinae = void> class GeneticAlgorithm;
 
 template<typename T>
 class GeneticAlgorithm<T, Extends<T, Chromosom>> {
 public:
-	GeneticAlgorithm();
+	GeneticAlgorithm(std::vector<T*> *population, EvaluationStrategy<T>* es, 
+					 CrossoverStrategy<T>* cs = nullptr, MutateStrategy<T>* ms = nullptr);
+
 	~GeneticAlgorithm();
 
 	void run(int n, bool useOldPopulation = false);
 
 private:
 	void run_step();
-	std::vector<T>* get_initial_population();
-	void mutate();
-	void crossover();
+	void virtual pre_run_method();
+	void virtual post_run_method();
 
-	std::vector<T> *population;
+protected:
+	std::vector<T*> *population;
+	EvaluationStrategy<T> *evaluationStrategy;
+	CrossoverStrategy<T> *crossoverStrategy;
+	MutateStrategy<T> *mutateStrategy;
 };
 
 #include "GeneticAlgorithm.tpp"
+
+#endif

@@ -147,15 +147,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryVector.h" />
+    <ClInclude Include="BitMutation.h" />
     <ClInclude Include="Chromosom.h" />
+    <ClInclude Include="CrossoverStrategy.h" />
+    <ClInclude Include="EvaluationStrategy.h" />
     <ClInclude Include="GeneticAlgorithm.h" />
+    <ClInclude Include="MutateStrategy.h" />
+    <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryVector.cpp" />
+    <ClCompile Include="BitMutation.cpp" />
     <ClCompile Include="Chromosom.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CrossoverStrategy.tpp" />
+    <None Include="EvaluationStrategy.tpp" />
     <None Include="GeneticAlgorithm.tpp" />
+    <None Include="MutateStrategy.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

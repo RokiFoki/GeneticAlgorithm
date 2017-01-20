@@ -4,7 +4,7 @@
 
 template<typename T>
 GeneticAlgorithm<T, Extends<T, Chromosom>>::GeneticAlgorithm(std::vector<T*> *population, EvaluationStrategy<T>* es, 
-															 CrossoverStrategy<T>* cs = nullptr, MutateStrategy<T>*ms = nullptr) {
+															 SelectionCrossoverStrategy<T>* cs = nullptr, MutateStrategy<T>*ms = nullptr) {
 	this->evaluationStrategy = es;
 	this->crossoverStrategy = cs;
 	this->mutateStrategy = ms;

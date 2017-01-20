@@ -2,13 +2,15 @@
 #define CROSSOVERSTRATEGY_TPP
 #pragma once
 
-#include "CrossoverStrategy.h"
 #include "util.h"
+#include "CrossoverStrategy.h"
+#include "Chromosom.h"
 
-template<typename T>
-CrossoverStrategy<T, Extends<T, Chromosom>>::CrossoverStrategy() { }
+template<typename T, int ParentsNumber, int ChildrenNumber>
+CrossoverStrategy<T, ParentsNumber, ChildrenNumber, Extends<T, Chromosom>>::CrossoverStrategy() { }
 
-template<typename T>
-CrossoverStrategy<T, Extends<T, Chromosom>>::~CrossoverStrategy() { }
+
+template<typename T, int ParentsNumber, int ChildrenNumber>
+CrossoverStrategy<T, ParentsNumber, ChildrenNumber, Extends<T, Chromosom>>::~CrossoverStrategy() { }
 
 #endif

@@ -13,6 +13,21 @@
     <ClCompile Include="BitMutation.cpp">
       <Filter>mutations</Filter>
     </ClCompile>
+    <ClCompile Include="SelectionStrategy.tpp">
+      <Filter>selection</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionCrossover.tpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossoverStrategy.tpp">
+      <Filter>crossover</Filter>
+    </ClCompile>
+    <ClCompile Include="RuletteWheelSelection.cpp">
+      <Filter>selection</Filter>
+    </ClCompile>
+    <ClCompile Include="OnePointCrossover.cpp">
+      <Filter>crossover</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chromosom.h">
@@ -27,9 +42,6 @@
     <ClInclude Include="EvaluationStrategy.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="CrossoverStrategy.h">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="MutateStrategy.h">
       <Filter>headers</Filter>
     </ClInclude>
@@ -38,6 +50,24 @@
     </ClInclude>
     <ClInclude Include="BitMutation.h">
       <Filter>mutations</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionCrossoverStrategy.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionCrossover.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionStrategy.h">
+      <Filter>selection</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossoverStrategy.h">
+      <Filter>crossover</Filter>
+    </ClInclude>
+    <ClInclude Include="RuletteWheelSelection.h">
+      <Filter>selection</Filter>
+    </ClInclude>
+    <ClInclude Include="OnePointCrossover.h">
+      <Filter>crossover</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +83,12 @@
     <Filter Include="mutations">
       <UniqueIdentifier>{175c795b-7add-4585-883e-826231193d3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="crossover">
+      <UniqueIdentifier>{c1fbfcf7-bdd5-46f3-af91-5945fd14c480}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="selection">
+      <UniqueIdentifier>{88c503aa-136d-4adf-9a55-d004f87ee417}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="GeneticAlgorithm.tpp">
@@ -61,10 +97,10 @@
     <None Include="EvaluationStrategy.tpp">
       <Filter>sources</Filter>
     </None>
-    <None Include="CrossoverStrategy.tpp">
+    <None Include="MutateStrategy.tpp">
       <Filter>sources</Filter>
     </None>
-    <None Include="MutateStrategy.tpp">
+    <None Include="SelectionCrossoverStrategy.tpp">
       <Filter>sources</Filter>
     </None>
   </ItemGroup>

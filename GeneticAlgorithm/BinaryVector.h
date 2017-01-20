@@ -10,18 +10,13 @@ class BinaryVector : public Chromosom {
 public:
 	BinaryVector(std::vector<bool> *source);
 
-	~BinaryVector() {
-		my_delete(source);
-	}
+	~BinaryVector();
 
 	std::vector<bool> get_source() { return *source; }
 
-	int size() { return this->_size; }
+	int size();
 
-	void change_bit(int position) {
-		this->source->at(position) = !this->source->at(position);
-		this->set_evaluation_needed();
-	}
+	void change_bit(int position);
 
 private:
 	std::vector<bool> *source;

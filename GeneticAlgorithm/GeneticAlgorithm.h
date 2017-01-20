@@ -7,7 +7,7 @@
 #include "util.h"
 #include "Chromosom.h"
 #include "EvaluationStrategy.h"
-#include "CrossoverStrategy.h"
+#include "SelectionCrossoverStrategy.h"
 #include "MutateStrategy.h"
 
 
@@ -17,7 +17,7 @@ template<typename T>
 class GeneticAlgorithm<T, Extends<T, Chromosom>> {
 public:
 	GeneticAlgorithm(std::vector<T*> *population, EvaluationStrategy<T>* es, 
-					 CrossoverStrategy<T>* cs = nullptr, MutateStrategy<T>* ms = nullptr);
+					 SelectionCrossoverStrategy<T>* cs = nullptr, MutateStrategy<T>* ms = nullptr);
 
 	~GeneticAlgorithm();
 
@@ -31,7 +31,7 @@ private:
 protected:
 	std::vector<T*> *population;
 	EvaluationStrategy<T> *evaluationStrategy;
-	CrossoverStrategy<T> *crossoverStrategy;
+	SelectionCrossoverStrategy<T> *crossoverStrategy;
 	MutateStrategy<T> *mutateStrategy;
 };
 

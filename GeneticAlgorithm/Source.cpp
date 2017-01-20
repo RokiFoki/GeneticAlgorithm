@@ -42,19 +42,18 @@ int main() {
 
 	srand((unsigned)time(0));
 
-	int population_size = 1000;
+	int population_size = 100;
 	vector<BinaryVector*> *population = new vector<BinaryVector*>();
 	for (int i = 0; i < population_size; ++i) {
 		vector<bool>* vec = new vector<bool>();
-		for (int j = 0; j < 200; ++j) vec->push_back(rand() % 2 == 0);
+		for (int j = 0; j < 5000; ++j) vec->push_back(rand() % 2 == 0);
 
 		BinaryVector *bv = new BinaryVector(vec);
 		population->push_back(bv);
-		cout << i << endl;
 	}
 
 	SumEvaluationStrategy *es = new SumEvaluationStrategy();
-	BitMutation *ms = new BitMutation(10, 2);
+	BitMutation *ms = new BitMutation(10);
 
 	SelectionStrategy<BinaryVector> *rws = new RuletteWheelSelection(population_size, 3);
 	CrossoverStrategy<BinaryVector> *opc = new OnePointCrossover();

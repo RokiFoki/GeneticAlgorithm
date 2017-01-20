@@ -6,19 +6,14 @@
 #include "BitMutation.h"
 #include "BinaryVector.h"
 
-BitMutation::BitMutation(int mutatePercentige, int bitEexpectationChange) {
+BitMutation::BitMutation(int mutatePercentige) {
 	this->mutatePercentige = mutatePercentige;
-	this->bitEexpectationChange = bitEexpectationChange;
 }
 
 void BitMutation::mutate(std::vector<BinaryVector*> *population) {
 	for (BinaryVector* bv : *population) {
 		if (rand() % 100 < mutatePercentige) {
-			for (int i = 0; i < bv->size(); ++i) {
-				if (rand() % 100 < bitEexpectationChange) {
-					bv->change_bit(i);
-				}
-			}
+			bv->change_bit(rand() % bv->size());
 		}
 	}
 };

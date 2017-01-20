@@ -16,7 +16,7 @@ RuletteWheelSelection::RuletteWheelSelection(int populationSize, int k) {
 
 	for (int i = 0; i < populationSize; ++i) {
 		int left = populationSize - i;
-		percentages[i] = std::make_pair((100. - last) * k / left + last, i);
+		percentages[i] = std::make_pair((1 - last) * k / left + last, i);
 		last = percentages[i].first;
 	}
 }
@@ -32,15 +32,15 @@ RuletteWheelSelection::~RuletteWheelSelection() { }
 std::vector<BinaryVector*> RuletteWheelSelection::selection(std::vector<BinaryVector*> *population) {
 	std::vector<BinaryVector*> parents(2);
 
-	auto cmp = [](int rnd, std::pair<double, int> const& value) { return value.first > rnd; };
+	auto cmp = [](double rnd, std::pair<double, int> const& value) { return value.first >= rnd; };
 
-	int r = rand() % 100;
+	double r = 1.0 * rand() / RAND_MAX;
 	
 	auto index = std::upper_bound(this->percentages.begin(), this->percentages.end(), r, cmp)->second;
 	parents[0] = population->at(index);
 
+	r = 1.0 * rand() / RAND_MAX;
 
-	r = rand() % 100;
 	index = std::upper_bound(this->percentages.begin(), this->percentages.end(), r, cmp)->second;
 	parents[1] = population->at(index);
 

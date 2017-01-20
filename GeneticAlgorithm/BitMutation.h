@@ -11,11 +11,10 @@
 class BitMutation : public MutateStrategy<BinaryVector> {
 
 public:
-	BitMutation(int mutatePercentige, int bitEexpectationChange);
+	BitMutation(int mutatePercentige);
 
 	void virtual mutate(std::vector<BinaryVector*> *population) override;
 private:
-	int bitEexpectationChange;
 	int mutatePercentige;
 
 };

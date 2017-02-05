@@ -12,7 +12,7 @@ public:
 
 	~BinaryVector();
 
-	std::vector<bool> get_source() { return *source; }
+	std::vector<bool> get_source();
 
 	int size();
 

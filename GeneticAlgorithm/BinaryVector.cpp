@@ -2,7 +2,7 @@
 #define BINARYVECTOR_CPP
 #pragma once
 
-
+#include <vector>
 #include "BinaryVector.h"
 
 BinaryVector::BinaryVector(std::vector<bool> *source) {
@@ -21,6 +21,10 @@ int BinaryVector::size() {
 void BinaryVector::change_bit(int position){
 	this->source->at(position) = !this->source->at(position);
 	this->set_evaluation_needed();
+}
+
+std::vector<bool> BinaryVector::get_source() { 
+	return *source; 
 }
 
 #endif

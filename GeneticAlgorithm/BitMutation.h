@@ -13,7 +13,7 @@ class BitMutation : public MutateStrategy<BinaryVector> {
 public:
 	BitMutation(int mutatePercentige);
 
-	void virtual mutate(std::vector<BinaryVector*> *population) override;
+	virtual std::vector<BinaryVector*>* mutate(std::vector<BinaryVector*> *population) override;
 private:
 	int mutatePercentige;
 

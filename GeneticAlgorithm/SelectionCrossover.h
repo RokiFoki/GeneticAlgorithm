@@ -4,22 +4,21 @@
 #pragma once
 
 #include <vector>
-#include "SelectionCrossoverStrategy.h"
 #include "util.h"
 #include "Chromosom.h"
-#include "SelectionStrategy.h"
+#include "ParentSelectionStrategy.h"
 #include "CrossoverStrategy.h"
 
-template <typename T, int ParentsNumber=2, int ChildrenNumber=2>
-class SelectionCrossover : public SelectionCrossoverStrategy<T, Extends<T, Chromosom>>
+template <typename T, int ParentsNumber=2, int ChildrenNumber=2, int Iterations=1>
+class SelectionCrossover : public CrossoverStrategy<T, ParentsNumber, ChildrenNumber*Iterations>
 {
 public:
-	SelectionCrossover(SelectionStrategy<T, ParentsNumber>*, CrossoverStrategy<T, ParentsNumber, ChildrenNumber>*);
+	SelectionCrossover(ParentSelectionStrategy<T, ParentsNumber>*, CrossoverStrategy<T, ParentsNumber, ChildrenNumber>*);
 	~SelectionCrossover();
 
-	virtual void crossover(std::vector<T*> *population, int elitism=0) override;
+	virtual std::vector<T*>* crossover(std::vector<T*> *population) override; 
 private:
-	SelectionStrategy<T, ParentsNumber> *selectionStrategy;
+	ParentSelectionStrategy<T, ParentsNumber> *selectionStrategy;
 	CrossoverStrategy<T, ParentsNumber, ChildrenNumber> *crossoverStrategy;
 
 };

@@ -12,9 +12,14 @@
 #include "SelectionCrossover.h"
 #include "RuletteWheelSelection.h"
 #include "OnePointCrossover.h"
+#include "EliminationSelection.h"
+
+
+#define POPULATION_SIZE 10
+#define CHROMOSOME_SIZE 50000
+
 
 using namespace std;
-
 
 class SumEvaluationStrategy : public EvaluationStrategy<BinaryVector> {
 
@@ -39,14 +44,12 @@ class SumEvaluationStrategy : public EvaluationStrategy<BinaryVector> {
 };
 
 int main() {
-
 	srand((unsigned)time(0));
 
-	int population_size = 100;
 	vector<BinaryVector*> *population = new vector<BinaryVector*>();
-	for (int i = 0; i < population_size; ++i) {
+	for (int i = 0; i < POPULATION_SIZE; ++i) {
 		vector<bool>* vec = new vector<bool>();
-		for (int j = 0; j < 5000; ++j) vec->push_back(rand() % 2 == 0);
+		for (int j = 0; j < CHROMOSOME_SIZE; ++j) vec->push_back(rand() % 2 == 0);
 
 		BinaryVector *bv = new BinaryVector(vec);
 		population->push_back(bv);
@@ -55,12 +58,14 @@ int main() {
 	SumEvaluationStrategy *es = new SumEvaluationStrategy();
 	BitMutation *ms = new BitMutation(10);
 
-	SelectionStrategy<BinaryVector> *rws = new RuletteWheelSelection(population_size, 3);
+	ParentSelectionStrategy<BinaryVector> *rws = new RuletteWheelSelection<BinaryVector>(3);
 	CrossoverStrategy<BinaryVector> *opc = new OnePointCrossover();
-	SelectionCrossover<BinaryVector> *sc = new SelectionCrossover<BinaryVector>(rws, opc);
-	GeneticAlgorithm<BinaryVector> ga(population, es, sc, ms);
+	CrossoverStrategy<BinaryVector, 2, 2> *cs = new SelectionCrossover<BinaryVector, 2, 2, 1>(rws, opc);
+	SelectionStrategy<BinaryVector> *ss = new EliminationSelection<BinaryVector>();
+	
+	GeneticAlgorithm<BinaryVector, 2, 2> ga(population, es, cs, ms, ss);
 
 	ga.run(1000000);
-
+	
 	return 0;
 }

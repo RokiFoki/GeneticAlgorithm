@@ -7,32 +7,37 @@
 #include "util.h"
 #include "Chromosom.h"
 #include "EvaluationStrategy.h"
-#include "SelectionCrossoverStrategy.h"
+#include "CrossoverStrategy.h"
 #include "MutateStrategy.h"
+#include "SelectionStrategy.h"
 
 
-template<typename T, typename Sfinae = void> class GeneticAlgorithm;
+template<typename T, int ParentsNumber, int ChildrenNumer, typename Sfinae = void> class GeneticAlgorithm;
 
-template<typename T>
-class GeneticAlgorithm<T, Extends<T, Chromosom>> {
+template<typename T, int ParentsNumber, int ChildrenNumer>
+class GeneticAlgorithm<T, ParentsNumber, ChildrenNumer, Extends<T, Chromosom>> {
 public:
 	GeneticAlgorithm(std::vector<T*> *population, EvaluationStrategy<T>* es, 
-					 SelectionCrossoverStrategy<T>* cs = nullptr, MutateStrategy<T>* ms = nullptr);
+		CrossoverStrategy<T, ParentsNumber, ChildrenNumer>* cs = nullptr, MutateStrategy<T>* ms = nullptr, 
+		SelectionStrategy<T> *ss = nullptr);
 
 	~GeneticAlgorithm();
 
-	void run(int n, bool useOldPopulation = false);
+	void run(int itertion_number, bool use_old_population = false);
 
 private:
-	void run_step();
+	void get_new_population();
+
+protected:
 	void virtual pre_run_method();
 	void virtual post_run_method();
 
-protected:
 	std::vector<T*> *population;
+
 	EvaluationStrategy<T> *evaluationStrategy;
-	SelectionCrossoverStrategy<T> *crossoverStrategy;
+	CrossoverStrategy<T, ParentsNumber, ChildrenNumer> *crossoverStrategy;
 	MutateStrategy<T> *mutateStrategy;
+	SelectionStrategy<T> *selectionStrategy;
 };
 
 #include "GeneticAlgorithm.tpp"

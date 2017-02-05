@@ -16,7 +16,7 @@ public:
 	MutateStrategy();
 	~MutateStrategy();
 
-	virtual void mutate(std::vector<T*> *population) = 0;
+	virtual std::vector<T*>* mutate(std::vector<T*> *population) = 0;
 };
 
 #include "MutateStrategy.tpp"

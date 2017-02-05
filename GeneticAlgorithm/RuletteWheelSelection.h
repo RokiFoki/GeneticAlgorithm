@@ -4,17 +4,24 @@
 #pragma once
 
 #include "BinaryVector.h"
-#include "SelectionStrategy.h"
+#include "ParentSelectionStrategy.h"
 
-class RuletteWheelSelection : public SelectionStrategy<BinaryVector, 2> {
+template<typename T, int ParentNumber=2>
+class RuletteWheelSelection : public ParentSelectionStrategy<T, ParentNumber> {
 public:
-	RuletteWheelSelection(int populationSize, int k);
+	RuletteWheelSelection(int k);
 	~RuletteWheelSelection();
 
-	std::vector<BinaryVector*> selection(std::vector<BinaryVector*> *population) override;
+	std::vector<BinaryVector*>* selection(std::vector<BinaryVector*> *population) override;
 
 private:
-	std::vector<std::pair<double, int>> percentages;
+	int k;
+	std::vector<std::pair<double, int>> *percentages;
+
+	void initialize(int populationSize);
+
 };
+
+#include "RuletteWheelSelection.tpp"
 
 #endif

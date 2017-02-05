@@ -14,8 +14,8 @@ public:
 	CrossoverStrategy();
 	~CrossoverStrategy();
 
-	// TODO maybe use template method pattern to make sure parents.size() == ChildrenNumber (template parameter) && ParentsNumber as return
-	virtual std::vector<T*> crossover(std::vector<T*> parents) = 0;
+	// TODO maybe use template method pattern to make sure population.size() == ChildrenNumber (template parameter) && ParentsNumber as return
+	virtual std::vector<T*>* crossover(std::vector<T*> *population) = 0;
 };
 
 

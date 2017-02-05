@@ -151,14 +151,14 @@
     <ClInclude Include="BitMutation.h" />
     <ClInclude Include="Chromosom.h" />
     <ClInclude Include="CrossoverStrategy.h" />
+    <ClInclude Include="EliminationSelection.h" />
     <ClInclude Include="OnePointCrossover.h" />
     <ClInclude Include="RuletteWheelSelection.h" />
-    <ClInclude Include="SelectionCrossoverStrategy.h" />
     <ClInclude Include="EvaluationStrategy.h" />
     <ClInclude Include="GeneticAlgorithm.h" />
     <ClInclude Include="MutateStrategy.h" />
     <ClInclude Include="SelectionCrossover.h" />
-    <ClInclude Include="SelectionStrategy.h" />
+    <ClInclude Include="ParentSelectionStrategy.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
@@ -166,17 +166,19 @@
     <ClCompile Include="BitMutation.cpp" />
     <ClCompile Include="Chromosom.cpp" />
     <ClCompile Include="CrossoverStrategy.tpp" />
+    <ClCompile Include="EliminationSelection.tpp" />
     <ClCompile Include="OnePointCrossover.cpp" />
-    <ClCompile Include="RuletteWheelSelection.cpp" />
+    <ClCompile Include="RuletteWheelSelection.tpp" />
     <ClCompile Include="SelectionCrossover.tpp" />
-    <ClCompile Include="SelectionStrategy.tpp" />
+    <ClCompile Include="ParentSelectionStrategy.tpp" />
+    <ClCompile Include="SelectionStrategy.h" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SelectionCrossoverStrategy.tpp" />
     <None Include="EvaluationStrategy.tpp" />
     <None Include="GeneticAlgorithm.tpp" />
     <None Include="MutateStrategy.tpp" />
+    <None Include="SelectionStrategy.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

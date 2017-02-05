@@ -13,7 +13,7 @@ public:
 	OnePointCrossover();
 	~OnePointCrossover();
 	
-	virtual std::vector<BinaryVector*> crossover(std::vector<BinaryVector*> parents) override;
+	virtual std::vector<BinaryVector*> *crossover(std::vector<BinaryVector*> *parents) override;
 };
 
 #endif

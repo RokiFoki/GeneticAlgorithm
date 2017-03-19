@@ -10,7 +10,7 @@ template<typename T, int ParentNumber=2>
 class RuletteWheelSelection : public ParentSelectionStrategy<T, ParentNumber> {
 public:
 	RuletteWheelSelection(int k);
-	~RuletteWheelSelection();
+	virtual ~RuletteWheelSelection();
 
 	std::vector<BinaryVector*>* selection(std::vector<BinaryVector*> *population) override;
 

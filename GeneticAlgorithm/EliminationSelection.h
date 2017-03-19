@@ -15,7 +15,7 @@ class EliminationSelection : public SelectionStrategy<T>
 {
 public:
 	EliminationSelection();
-	~EliminationSelection();
+	virtual ~EliminationSelection();
 
 	virtual std::vector<T*> *selection(std::vector<T*> *population, std::vector<T*> *new_generation) override;
 };

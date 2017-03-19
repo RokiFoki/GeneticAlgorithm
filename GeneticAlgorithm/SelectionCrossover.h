@@ -14,7 +14,7 @@ class SelectionCrossover : public CrossoverStrategy<T, ParentsNumber, ChildrenNu
 {
 public:
 	SelectionCrossover(ParentSelectionStrategy<T, ParentsNumber>*, CrossoverStrategy<T, ParentsNumber, ChildrenNumber>*);
-	~SelectionCrossover();
+	virtual ~SelectionCrossover();
 
 	virtual std::vector<T*>* crossover(std::vector<T*> *population) override; 
 private:

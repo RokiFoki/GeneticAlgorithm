@@ -11,7 +11,7 @@
 class OnePointCrossover : public CrossoverStrategy<BinaryVector, 2, 2> {
 public:
 	OnePointCrossover();
-	~OnePointCrossover();
+	virtual ~OnePointCrossover();
 	
 	virtual std::vector<BinaryVector*> *crossover(std::vector<BinaryVector*> *parents) override;
 };

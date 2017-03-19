@@ -12,7 +12,7 @@ template<typename T, int ParentsNumber>
 class ParentSelectionStrategy<T, ParentsNumber, Extends<T, Chromosom>> {
 public:
 	ParentSelectionStrategy();
-	~ParentSelectionStrategy();
+	virtual ~ParentSelectionStrategy();
 
 	// TODO maybe use template method pattern to make sure std::vector<T*>.size() == ParentsNumber (template parameter)
 	virtual std::vector<T*>* selection(std::vector<T*> *population) = 0; 

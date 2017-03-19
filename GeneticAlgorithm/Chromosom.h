@@ -6,7 +6,7 @@ class Chromosom
 {
 public:
 	Chromosom();
-	~Chromosom();
+	virtual ~Chromosom();
 
 	bool evaluation_needed();
 	void set_evaluation_needed();

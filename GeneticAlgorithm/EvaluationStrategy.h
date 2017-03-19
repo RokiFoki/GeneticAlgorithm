@@ -14,7 +14,7 @@ template <typename T>
 class EvaluationStrategy<T, Extends<T, Chromosom>> {
 public:
 	EvaluationStrategy();
-	~EvaluationStrategy();
+	virtual ~EvaluationStrategy();
 
 	virtual double evaluate(T&, std::vector<T*>*) = 0;
 	virtual double evaluatePopulation(std::vector<T*>*) = 0;

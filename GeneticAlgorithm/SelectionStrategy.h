@@ -12,7 +12,7 @@ template<typename T>
 class SelectionStrategy<T, Extends<T, Chromosom>> {
 public:
 	SelectionStrategy();
-	~SelectionStrategy();
+	virtual ~SelectionStrategy();
 
 	virtual std::vector<T*>* selection(std::vector<T*> *population, std::vector<T*> *children) = 0;
 };

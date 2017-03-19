@@ -10,7 +10,7 @@ class BinaryVector : public Chromosom {
 public:
 	BinaryVector(std::vector<bool> *source);
 
-	~BinaryVector();
+	virtual ~BinaryVector();
 
 	std::vector<bool> get_source();
 

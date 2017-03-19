@@ -21,7 +21,7 @@ public:
 		CrossoverStrategy<T, ParentsNumber, ChildrenNumer>* cs = nullptr, MutateStrategy<T>* ms = nullptr, 
 		SelectionStrategy<T> *ss = nullptr);
 
-	~GeneticAlgorithm();
+	virtual ~GeneticAlgorithm();
 
 	void run(int itertion_number, bool use_old_population = false);
 
